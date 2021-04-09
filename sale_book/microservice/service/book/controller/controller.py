@@ -15,7 +15,7 @@ class search() :
     # tim kiem sach theo ten
     def search_name_book (self) :
         data_book = []
-        name = request.args.get("name_book")
+        # name = request.args.get("name_book")
         books = Book.query.filter(Book.name.startswith(name)).all()
         try :
             for book in books :
@@ -26,8 +26,8 @@ class search() :
     # tim kiem sach theo gia
     def search_price (self) :
         data_price = []
-        min_price = request.args.get("min_price")
-        max_price = request.args.get("max_price")
+        # min_price = request.args.get("min_price")
+        # max_price = request.args.get("max_price")
         try :
             if min_price!= None and max_price != None :
                 prices = Book.query.filter(Book.price.__gt__(min_price),Book.price.__lt__(max_price)).all()

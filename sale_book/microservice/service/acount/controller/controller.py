@@ -1,15 +1,15 @@
 from flask import*
-from flask import Blueprint
+from flask import Blueprint , Request
 from flask_sqlalchemy import SQLAlchemy
-from flask import Request
 from flask_login import current_user, login_user
 from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 from model import *
-from book.controller.controller import search
+# from book.router.router import *
 
 class login_sigin() :
     def login(self) :
+        login = LoginManager(app)
         body = request.get_json()
         if not "username" in body or not "password" in body :
             return ("username or password empty")
@@ -25,6 +25,8 @@ class login_sigin() :
                     return ("wrong password")
             except :    
                 return ("Account does not exist")
+
+    
 
     def sigin(self) :
         body = request.get_json()
@@ -45,30 +47,12 @@ class login_sigin() :
                     except :
                         return ("Syntax error")
             else :
-                return ("password error")
+                return ("password error")           
 
 
-class all_user :
-    def user (self) :
-        if 
-        all_user = []
-        users = Account.query.filter_by(admin = '1').all()
-        for user in users :
-            all_user.append(user.username)
-        return ({"all_user": all_user})
-
-
- 
-
-            
-            
-        
-            
-            
-
-            
 
 login_sigin = login_sigin()
+
 
 
 
