@@ -20,7 +20,7 @@ class login_sigin() :
                 check = check_password_hash(user.password ,body["password"])
                 if check == True :
                     login_user(user = user)
-                    return ("Logged in successfully")
+                    return ("Logged in successfully"  )
                 else :
                     return ("wrong password")
             except :    
@@ -48,6 +48,15 @@ class login_sigin() :
                         return ("Syntax error")
             else :
                 return ("password error")           
+
+    def check(self):
+        id = request.args.get("id")
+        user = Account.query.get(id)
+        id_new = Float(user.id) 
+        if user.admin == 0 :
+            return ({"id":user.id})
+        else :
+            return "error"
 
 
 

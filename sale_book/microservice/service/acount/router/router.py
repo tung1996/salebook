@@ -18,3 +18,10 @@ def sigin():
 app.register_blueprint(admin, url_prefix = "/admin" )
 
 
+#check account
+@app.route('/check', methods= ['GET'])
+def check():
+    return login_sigin.check()
+
+
+
